@@ -70,9 +70,10 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 800,
-    height: 600,
+    height: 700,
     icon: getAssetPath('icon.png'),
     webPreferences: { enableRemoteModule: true, nodeIntegration: true },
+    autoHideMenuBar: true,
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);

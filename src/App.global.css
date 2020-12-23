@@ -16,9 +16,6 @@ body {
   );
   font-family: 'Noto Sans JP', sans-serif;
   overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 h2 {
@@ -30,8 +27,35 @@ h2 {
 }
 
 .textarea {
-  min-width: 200px;
-  min-height: 200px;
+  text-align: center;
+}
+.textarea > textarea {
+  margin: 12px;
+  min-width: 80%;
+  min-height: 400px;
   resize: none;
   background-color: rgba(255, 255, 255, 0.5);
+  outline: none;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: space-around;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.textContainer > .textarea {
+  flex-grow: 1;
+}
+.textContainer__controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.selectForm {
+  margin-top: 24px !important;
 }
