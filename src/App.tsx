@@ -1,41 +1,36 @@
+/* eslint-disable promise/catch-or-return */
 import React from 'react';
+import { Box, Container, Button, Grid } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import icon from '../assets/icon.svg';
+import TextAreaField from './components/TextAreaField';
 
+const { dialog } = require('electron').remote;
+
+const openDialog = () => {};
 const Hello = () => {
   return (
-    <div>
-      <div className="Hello">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
+    <Container>
+      <Box component="span" m={1}>
+        <TextAreaField />
+      </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <Button variant="contained" color="primary">
+            Зашифровать
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Button variant="contained" color="primary">
+            Расшифровать
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Button variant="contained" color="primary" onClick={openDialog}>
+            Выбрать файл
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
