@@ -14,7 +14,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import SaveIcon from '@material-ui/icons/Save';
+import { Save } from '@material-ui/icons';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TextAreaField from './components/TextAreaField';
 
@@ -206,7 +206,7 @@ const MainComponent = () => {
           color="primary"
           onClick={saveDialog}
           disabled={!text || !gammaKey}
-          startIcon={<SaveIcon />}
+          startIcon={<Save />}
         >
           Сохранить в файл
         </Button>
