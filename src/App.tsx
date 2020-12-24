@@ -19,6 +19,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TextAreaField from './components/TextAreaField';
 
 import { encrypt, decrypt } from './helpers/encryption';
+import { xorDecrypt, xorEncrypt } from './helpers/xorEncryption';
 
 const { dialog } = require('electron').remote;
 const fs = require('fs');
@@ -28,6 +29,7 @@ const MainComponent = () => {
   const [gammaMethod, setGammaMethod] = useState('createGammaFirst');
   const [isEditable, setEditable] = useState(false);
   const [gammaKey, setGammaKey] = useState('');
+  const [encryption, setEncryption] = useState(false);
   const [alphabet, setAlphabet] = useState('RUSENG');
   const [message, setMessage] = useState({
     title: '',
@@ -50,6 +52,9 @@ const MainComponent = () => {
         break;
       case 'alphabet':
         setAlphabet(value);
+        break;
+      case 'encryption':
+        setEncryption(!encryption);
         break;
       default:
         break;
@@ -100,9 +105,7 @@ const MainComponent = () => {
         properties: [],
       })
       .then((file: any) => {
-        console.log(file.canceled);
         if (!file.canceled) {
-          console.log(file.filePath.toString());
           fs.writeFile(file.filePath.toString(), text, (err: any) => {
             if (err) throw err;
             snackBarOpen('Сохранено!', 'success');
@@ -115,12 +118,16 @@ const MainComponent = () => {
   };
 
   const handleEncryption = () => {
-    const newText = encrypt(text, gammaKey, gammaMethod, alphabet);
+    const newText = !encryption
+      ? encrypt(text, gammaKey, gammaMethod, alphabet)
+      : xorEncrypt(text, gammaKey, gammaMethod, alphabet);
     setText(newText);
     snackBarOpen('Текст был расшифрован!', 'success');
   };
   const handleDecryption = () => {
-    const newText = decrypt(text, gammaKey, gammaMethod, alphabet);
+    const newText = !encryption
+      ? decrypt(text, gammaKey, gammaMethod, alphabet)
+      : xorDecrypt(text, gammaKey, gammaMethod, alphabet);
     setText(newText);
     snackBarOpen('Текст был зашифрован!', 'success');
   };
@@ -197,6 +204,18 @@ const MainComponent = () => {
               <MenuItem value="RUSENG">РусАнг</MenuItem>
             </Select>
           </FormControl>
+          <FormControlLabel
+            control={
+              <MaterialSwitch
+                value={encryption}
+                color="primary"
+                name="encryption"
+                onChange={handleChange}
+              />
+            }
+            label="XOR"
+            labelPlacement="start"
+          />
         </div>
         <TextAreaField text={text} setText={setText} editable={isEditable} />
       </div>

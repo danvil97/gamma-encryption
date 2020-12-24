@@ -27,7 +27,6 @@ export const decrypt = (
 ) => {
   const alpha = ALPHABETS[alphabet].split('');
   const gamma: any = gammaCreators[gammaMethod](key, text.length);
-  console.log(gamma);
   const decryptedText = text
     .split('')
     .map(
