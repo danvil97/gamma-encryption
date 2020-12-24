@@ -14,7 +14,10 @@ const gammaCreators = {
   },
   createGammaThird: (key: string, textLength: number): string => {
     const gamma = key.repeat(Math.ceil(textLength / key.length));
-    return gamma;
+    return gamma
+      .split('')
+      .map((el, idx) => (idx % 2 ? el.toUpperCase() : el.toLowerCase()))
+      .join('');
   },
 };
 
