@@ -188,6 +188,9 @@ const MainComponent = () => {
               <MenuItem value="createGammaFirst">Метод 1</MenuItem>
               <MenuItem value="createGammaSecond">Метод 2</MenuItem>
               <MenuItem value="createGammaThird">Метод 3</MenuItem>
+              <MenuItem value="createGammaWithPseudoRandom">
+                Псевдорандом
+              </MenuItem>
             </Select>
           </FormControl>
           <FormControl className="selectForm">

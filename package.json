@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Fast Refresh for rapid application development",
+  "name": "danvil97-gamma-encryption-app",
+  "productName": "GammaEncryption",
+  "description": "Electron application based on React, React Router, Webpack. GammaEncryption.",
   "scripts": {
     "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
     "build:main": "cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js",
@@ -30,8 +30,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "CryptoGamma",
+    "appId": "org.erb.CryptoGamma",
     "files": [
       "dist/",
       "node_modules/",
@@ -95,8 +95,8 @@
     "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
+    "name": "Danius Vilimas",
+    "email": "danvil97@yandex.ru",
     "url": "https://electron-react-boilerplate.js.org"
   },
   "contributors": [
@@ -259,6 +259,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.5",
+    "seeded-rand": "^2.0.1",
     "source-map-support": "^0.5.19"
   },
   "devEngines": {
